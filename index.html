@@ -10,14 +10,18 @@
 </head>
 <body ng-app="miApp" ng-controller="miController">
 	
-	<div ng-repeat="opcion in opciones">
-	    <span>{{opcion}}</span><input type="radio" ng-model="respuesta.r1" value={{opcion}}>
+	<div ng-repeat="pregunta in preguntas">
+        <div ng-repeat="opcion in pregunta.opciones">
+            <span>{{opcion}}</span><input type="radio" ng-model="respuesta[pregunta.numero]" value={{opcion}}>
+        </div>
+        <br><br>
 	</div>
+	<!--
 	<br><br>
 	<div ng-repeat="nombre in nombres">
 	    <span>{{nombre}}</span><input type="radio" ng-model="respuesta.r2" value={{nombre}}>
 	</div>
-	
+	-->
 	<input type="button" value="enviar" ng-click="Enviar()">
 	
     
