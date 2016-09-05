@@ -6,7 +6,7 @@ app.controller('miController', function($scope){
     $scope.opciones = ['Azul y Amarillo', 'Rojo y Blanco', 'Verde'];
     $scope.nombres = ['Juanma', 'Facu', 'Lautaro'];
     
-    $scope.respuesta = {r1: "", r2:""};
+    $scope.respuesta = {};
     
     $scope.Enviar = function(){
         alert($scope.respuesta.r);
