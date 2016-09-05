@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	
+</head>
+<body ng-app="miApp" ng-controller="miController">
+	
+	<div ng-repeat="opcion in opciones">
+	    <span>{{opcion}}</span><input type="radio" ng-model="respuesta.r1" value={{opcion}}>
+	</div>
+	<br><br>
+	<div ng-repeat="nombre in nombres">
+	    <span>{{nombre}}</span><input type="radio" ng-model="respuesta.r2" value={{nombre}}>
+	</div>
+	
+	<input type="button" value="enviar" ng-click="Enviar()">
+	
+    
+    
+    
+	<p ng-model="saludo">{{respuesta}}</p>
+</body>
+</html>
