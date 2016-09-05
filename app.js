@@ -1,19 +1,21 @@
 var app = angular.module('miApp', []);
 
-app.controller('miController', function($scope){
-	$scope.saludo = "HOLA; MUNDO";
+app.controller('miController', function($scope, $timeout){
+	
+    var preguntasRef = new Firebase('https://triviapp-c9b77.firebaseio.com/preguntas');
     
-    $scope.opciones = ['Azul y Amarillo', 'Rojo y Blanco', 'Verde'];
-    $scope.nombres = ['Juanma', 'Facu', 'Lautaro'];
+    $scope.infofirebase = [];
     
-    $scope.preguntas = {
-        opciones : {numero: 1, opciones: ['Azul y Amarillo', 'Rojo y Blanco', 'Verde']},
-        nombres : {numero: 2, opciones: ['Juanma', 'Facu', 'Lautaro']}
-    };
+    preguntasRef.on('child_added', function(snapshot){
+        $timeout(function(){
+            var pregunta = snapshot.val();
+            $scope.infofirebase.push(pregunta);
+        });
+    });
     
     $scope.respuesta = {};
     
     $scope.Enviar = function(){
-        alert($scope.respuesta.r);
+        alert("Sus respuestas fueron: " + JSON.stringify($scope.respuesta));
     }
 });

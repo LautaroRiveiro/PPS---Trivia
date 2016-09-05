@@ -4,29 +4,25 @@
 
 	<meta charset="UTF-8">
 	<title>Document</title>
+    <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
 	<script type="text/javascript" src="angular.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
-	
+		
 </head>
 <body ng-app="miApp" ng-controller="miController">
 	
-	<div ng-repeat="pregunta in preguntas">
+	<div ng-repeat="pregunta in infofirebase">
+       {{pregunta.pregunta}}
         <div ng-repeat="opcion in pregunta.opciones">
-            <span>{{opcion}}</span><input type="radio" ng-model="respuesta[pregunta.numero]" value={{opcion}}>
+            <span>{{opcion}}</span><input type="radio" ng-model="respuesta[pregunta.id]" value={{opcion}}>
         </div>
         <br><br>
 	</div>
-	<!--
-	<br><br>
-	<div ng-repeat="nombre in nombres">
-	    <span>{{nombre}}</span><input type="radio" ng-model="respuesta.r2" value={{nombre}}>
-	</div>
-	-->
-	<input type="button" value="enviar" ng-click="Enviar()">
-	
+
+	<input type="button" value="enviar" ng-click="Enviar()">    
     
-    
-    
-	<p ng-model="saludo">{{respuesta}}</p>
+	<p>{{respuesta}}</p>
+
 </body>
 </html>
