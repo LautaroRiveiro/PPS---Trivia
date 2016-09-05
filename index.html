@@ -12,8 +12,10 @@
 </head>
 <body ng-app="miApp" ng-controller="miController">
 	
+	<!-- Hago una iteración de cada pregunta almacenada en mi array de preguntas -->
 	<div ng-repeat="pregunta in infofirebase">
-       {{pregunta.pregunta}}
+        {{pregunta.pregunta}}
+        <!-- Por cada pregunta hago una iteración de cada una de sus opciones -->
         <div ng-repeat="(key, opcion) in pregunta.opciones">
             <span>{{opcion}}</span><input type="radio" ng-model="respuestasElegidas[pregunta.id]" value={{key}}>
         </div>
@@ -22,8 +24,9 @@
 
 	<input type="button" value="enviar" ng-click="Enviar()">    
     
-	<p>{{respuestasElegidas}}</p>
-	<p>{{respuestasCorrectas}}</p>
+    <!-- Muestro el valor contenido en las variables respuestasElegidas y respuestasCorrectas -->
+	<p>Respuestas elegidas : {{respuestasElegidas}}</p>
+	<p>Respuestas correctas: {{respuestasCorrectas}}</p>
 
 </body>
 </html>

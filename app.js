@@ -2,11 +2,13 @@ var app = angular.module('miApp', []);
 
 app.controller('miController', function($scope, $timeout){
 	
+    //Creo un objeto referencia a la BD en Firebase, a la 'tabla' de Preguntas
     var preguntasRef = new Firebase('https://triviapp-c9b77.firebaseio.com/preguntas');
     
+    
+    //Recupero de Firebase todas las preguntas, almacenándolas en un array que contiene objetos pregunta.
     $scope.infofirebase = [];
     $scope.respuestasCorrectas = {};
-    $scope.respuestasElegidas = {};
     
     preguntasRef.on('child_added', function(snapshot){
         $timeout(function(){
@@ -16,6 +18,12 @@ app.controller('miController', function($scope, $timeout){
         });
     });    
     
+    
+    //Creo un objeto de respuestas elegidas, donde dinámicamente voy a ir almacenando las respuestas seleccionadas.
+    $scope.respuestasElegidas = {};
+    
+    
+    //Programo el botón Enviar evaluando las respuestas elegidas con las correctas
     $scope.Enviar = function(){
         //alert("Sus respuestas fueron: " + JSON.stringify($scope.respuestasElegidas));
         var contadorAciertos = 0;
