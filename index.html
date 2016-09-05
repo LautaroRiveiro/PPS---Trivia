@@ -15,14 +15,15 @@
 	<div ng-repeat="pregunta in infofirebase">
        {{pregunta.pregunta}}
         <div ng-repeat="(key, opcion) in pregunta.opciones">
-            <span>{{opcion}}</span><input type="radio" ng-model="respuesta[pregunta.id]" value={{key}}>
+            <span>{{opcion}}</span><input type="radio" ng-model="respuestasElegidas[pregunta.id]" value={{key}}>
         </div>
         <br><br>
 	</div>
 
 	<input type="button" value="enviar" ng-click="Enviar()">    
     
-	<p>{{respuesta}}</p>
+	<p>{{respuestasElegidas}}</p>
+	<p>{{respuestasCorrectas}}</p>
 
 </body>
 </html>
