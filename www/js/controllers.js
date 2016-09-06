@@ -1,7 +1,7 @@
-var app = angular.module('miApp', []);
+angular.module('starter.controllers', [])
 
-app.controller('miController', function($scope, $timeout){
-	
+.controller('DashCtrl', function($scope, $timeout) {
+    	
     //Creo un objeto referencia a la BD en Firebase, a la 'tabla' de Preguntas
     var preguntasRef = new Firebase('https://triviapp-c9b77.firebaseio.com/preguntas');
     
@@ -44,4 +44,29 @@ app.controller('miController', function($scope, $timeout){
         
         alert("Cantidad de aciertos: "+contadorAciertos+"/"+contadorPreguntas);
     }
+})
+
+.controller('ChatsCtrl', function($scope, Chats) {
+  // With the new view caching in Ionic, Controllers are only called
+  // when they are recreated or on app start, instead of every page change.
+  // To listen for when this page is active (for example, to refresh data),
+  // listen for the $ionicView.enter event:
+  //
+  //$scope.$on('$ionicView.enter', function(e) {
+  //});
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+  $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('AccountCtrl', function($scope) {
+  $scope.settings = {
+    enableFriends: true
+  };
 });
