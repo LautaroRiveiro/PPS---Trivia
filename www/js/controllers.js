@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
             $scope.infofirebase.push(pregunta);
             $scope.respuestasCorrectas[pregunta.id] = pregunta.respuesta;
         });
-    });    
+    });
     
     
     //Creo un objeto de respuestas elegidas, donde dinámicamente voy a ir almacenando las respuestas seleccionadas.
@@ -46,6 +46,22 @@ angular.module('starter.controllers', [])
     }
 })
 
+
+.controller('AboutCtrl', function($scope) {
+  
+})
+
+.controller('LoginCtrl', function($scope) {
+
+});
+
+
+
+
+
+
+
+/*
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -69,4 +85,6 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
-});
+})
+*/
+    
